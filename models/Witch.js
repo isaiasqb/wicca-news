@@ -1,4 +1,4 @@
-const { Model, DataType, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 //create Witch model
@@ -54,4 +54,4 @@ Witch.init(
   }
 );
 
-model.exports = Witch;
+module.exports = Witch;

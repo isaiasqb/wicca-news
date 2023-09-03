@@ -4,7 +4,9 @@ const { Witch } = require('../../models');
 // G E T    /api/witches
 router.get('/', (req, res) => {
   // access Witch model and run .findAll() method
-  Witch.findAll()
+  Witch.findAll({
+    attributes: { exclude: ['password'] }
+  })
   .then(dbWitchData => res.json(dbWitchData))
   .catch(err => {
     console.log(err);
@@ -17,7 +19,8 @@ router.get('/:id', (req, res) => {
   Witch.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    attributes: { exclude: ['password'] }
   })
   .then(dbWitchData => {
     if(!dbWitchData) {
